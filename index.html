@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>BGMI Tournament – ANONYMOUS1270</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    /* ==========
+       VARIABLES
+       ========== */
+    :root {
+      --bg-color: #0f0f0f;
+      --primary: #ff0057;
+      --secondary: #ffd700;
+      --text-light: #f1f1f1;
+      --card-bg: #1a1a1a;
+      --glow: 0 0 15px rgba(255,0,87,0.6);
+    }
+
+    /* ==========
+       BASE STYLES
+       ========== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      /* allow easy rem ↔︎ px math */
+      font-size: 100%;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: radial-gradient(circle at top, #1e1e1e 0%, var(--bg-color) 100%);
+      color: var(--text-light);
+      padding: 1rem;
+      overflow-x: hidden;
+      line-height: 1.5;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* ==========
+       LAYOUT
+       ========== */
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem;
+      background: var(--card-bg);
+      border-radius: 1rem;
+      box-shadow: var(--glow);
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    /* ==========
+       TYPOGRAPHY
+       ========== */
+    header h1 {
+      font-family: 'Orbitron', sans-serif;
+      /* scales between 1.8rem (28.8px) and 3rem (48px) based on viewport */
+      font-size: clamp(1.8rem, 5vw, 3rem);
+      color: var(--primary);
+      text-align: center;
+      margin-bottom: 0.5rem;
+    }
+
+    header h2 {
+      font-size: clamp(1rem, 3vw, 1.5rem);
+      color: var(--secondary);
+      text-align: center;
+      margin-bottom: 1.5rem;
+    }
+
+    .event-date {
+      font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+      color: #bbb;
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+
+    #countdown {
+      font-family: 'Orbitron', sans-serif;
+      font-size: clamp(1.2rem, 4vw, 2rem);
+      color: var(--primary);
+      text-align: center;
+      margin-bottom: 2rem;
+      animation: glowFade 1.5s ease-in-out infinite alternate;
+    }
+
+    /* ==========
+       PRIZES LIST
+       ========== */
+    .prizes {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      padding: 1.5rem;
+      border-radius: 1rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .prizes h3 {
+      font-size: clamp(1.3rem, 3vw, 1.8rem);
+      text-align: center;
+      color: var(--secondary);
+      margin-bottom: 1rem;
+    }
+
+    .prizes ul {
+      list-style: none;
+    }
+
+    .prizes li {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: clamp(1rem, 2.5vw, 1.2rem);
+      margin: 1rem 0;
+      transition: transform 0.3s, color 0.3s;
+    }
+
+    .prizes li:hover {
+      color: var(--primary);
+      transform: translateX(0.5rem);
+    }
+
+    /* ==========
+       REGISTER BUTTON
+       ========== */
+    .register-section {
+      text-align: center;
+      margin-top: 2rem;
+    }
+
+    .register-section h3 {
+      font-size: clamp(1.2rem, 3vw, 1.6rem);
+      color: var(--secondary);
+      margin-bottom: 1rem;
+    }
+
+    .register-button {
+      display: inline-block;
+      padding: clamp(0.75rem, 2vw, 1rem) clamp(1.5rem, 4vw, 2rem);
+      font-size: clamp(1rem, 2.5vw, 1.2rem);
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: #000;
+      font-weight: bold;
+      border: none;
+      border-radius: 0.75rem;
+      cursor: pointer;
+      box-shadow: 0 0 10px var(--primary), 0 0 20px var(--secondary);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .register-button:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 20px var(--secondary), 0 0 40px var(--primary);
+    }
+
+    .disclaimer {
+      font-size: clamp(0.8rem, 2vw, 1rem);
+      color: #ccc;
+      margin-top: 1rem;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 3rem;
+      font-size: clamp(0.8rem, 2vw, 1rem);
+      color: #777;
+    }
+
+    /* ==========
+       ANIMATIONS
+       ========== */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(2rem); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes glowFade {
+      from { text-shadow: 0 0 10px var(--primary); }
+      to   { text-shadow: 0 0 20px var(--secondary); }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>BGMI Custom Room Tournament</h1>
+      <h2>🎉 Celebrating 10 Years with ANONYMOUS1270</h2>
+      <p class="event-date">📅 29 May 2025 at 8:00 PM IST</p>
+      <div id="countdown">Loading countdown...</div>
+    </header>
+
+    <section class="prizes">
+      <h3>🏆 Tournament Prizes</h3>
+      <ul>
+        <li>💥 2000 UC for Final Kill</li>
+        <li>🎁 Royal Pass for Top 5 Players</li>
+        <li>💰 ₹10 per Kill (only for 5+ kills)</li>
+      </ul>
+    </section>
+
+    <section class="register-section">
+      <h3>📥 Ready to Join the Battle?</h3>
+      <button class="register-button"
+              onclick="window.open('https://docs.google.com/forms/d/e/1FAIpQLScXHWouv_OUDL1sa72-ZZI1v-v2Ay8AWmbl9Dm1uCgMkcm4dw/viewform?usp=header','_blank')">
+        Register Now
+      </button>
+      <p class="disclaimer">⚠ Please enter accurate details to ensure eligibility for rewards.</p>
+    </section>
+
+    <footer>
+      © 2025 ANONYMOUS1270 | Built for the real warriors of BGMI 🔥
+    </footer>
+  </div>
+
+  <script>
+    const countdown = document.getElementById("countdown");
+    // 29 May 2025 at 20:00:00 IST (UTC+05:30)
+    const eventDate = new Date("2025-05-29T20:00:00+05:30").getTime();
+
+    function updateCountdown() {
+      const now = Date.now();
+      const diff = eventDate - now;
+
+      if (diff <= 0) {
+        countdown.textContent = "🚨 Tournament Started!";
+        clearInterval(timerInterval);
+        return;
+      }
+
+      const d = Math.floor(diff / (1000*60*60*24));
+      const h = Math.floor((diff % (1000*60*60*24)) / (1000*60*60));
+      const m = Math.floor((diff % (1000*60*60)) / (1000*60));
+      const s = Math.floor((diff % (1000*60)) / 1000);
+
+      countdown.textContent = `⏳ ${d}d ${h}h ${m}m ${s}s remaining`;
+    }
+
+    updateCountdown();
+    const timerInterval = setInterval(updateCountdown, 1000);
+  </script>
+</body>
+</html>
