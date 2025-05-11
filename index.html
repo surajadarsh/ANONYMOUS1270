@@ -6,9 +6,6 @@
   <title>BGMI Tournament – ANONYMOUS1270</title>
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <style>
-    /* ==========
-       VARIABLES
-       ========== */
     :root {
       --bg-color: #0f0f0f;
       --primary: #ff0057;
@@ -16,175 +13,178 @@
       --text-light: #f1f1f1;
       --card-bg: #1a1a1a;
       --glow: 0 0 15px rgba(255,0,87,0.6);
+      --yt-red: #FF0000;
+      --twitch-purple: #6441A5;
+      --discord-blurple: #5865F2;
     }
-
-    /* ==========
-       BASE STYLES
-       ========== */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    html {
-      /* allow easy rem ↔︎ px math */
-      font-size: 100%;
-    }
-
+    *, *::before, *::after { box-sizing: border-box; }
     body {
+      margin: 0;
+      padding: clamp(0.5rem, 3vw, 2rem);
       font-family: 'Poppins', sans-serif;
       background: radial-gradient(circle at top, #1e1e1e 0%, var(--bg-color) 100%);
       color: var(--text-light);
-      padding: 1rem;
-      overflow-x: hidden;
       line-height: 1.5;
     }
+    a { text-decoration: none; color: inherit; }
 
-    a {
-      text-decoration: none;
-      color: inherit;
-    }
-
-    /* ==========
-       LAYOUT
-       ========== */
     .container {
-      width: 90%;
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 2rem;
+      max-width: 1000px;
+      margin: auto;
+      padding: clamp(1rem, 4vw, 3rem);
       background: var(--card-bg);
-      border-radius: 1rem;
+      border-radius: clamp(0.75rem, 2vw, 1.5rem);
       box-shadow: var(--glow);
+      display: flex;
+      flex-direction: column;
+      gap: clamp(2rem, 5vw, 4rem);
       animation: fadeIn 1s ease-in-out;
     }
 
-    /* ==========
-       TYPOGRAPHY
-       ========== */
+    header {
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      gap: clamp(0.5rem, 2vw, 1rem);
+    }
     header h1 {
       font-family: 'Orbitron', sans-serif;
-      /* scales between 1.8rem (28.8px) and 3rem (48px) based on viewport */
-      font-size: clamp(1.8rem, 5vw, 3rem);
+      font-size: clamp(2rem, 6vw, 4rem);
       color: var(--primary);
-      text-align: center;
-      margin-bottom: 0.5rem;
     }
-
     header h2 {
-      font-size: clamp(1rem, 3vw, 1.5rem);
+      font-size: clamp(1rem, 4vw, 1.75rem);
       color: var(--secondary);
-      text-align: center;
-      margin-bottom: 1.5rem;
     }
-
     .event-date {
-      font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+      font-size: clamp(0.9rem, 3vw, 1.2rem);
       color: #bbb;
-      text-align: center;
-      margin-bottom: 1rem;
     }
-
     #countdown {
       font-family: 'Orbitron', sans-serif;
-      font-size: clamp(1.2rem, 4vw, 2rem);
+      font-size: clamp(1.2rem, 5vw, 2.5rem);
       color: var(--primary);
-      text-align: center;
-      margin-bottom: 2rem;
       animation: glowFade 1.5s ease-in-out infinite alternate;
     }
 
-    /* ==========
-       PRIZES LIST
-       ========== */
-    .prizes {
+    .prizes,
+    .rules {
       background: rgba(255,255,255,0.05);
       border: 1px solid rgba(255,255,255,0.1);
-      padding: 1.5rem;
-      border-radius: 1rem;
-      margin-bottom: 2.5rem;
+      padding: clamp(1rem, 3vw, 2rem);
+      border-radius: clamp(0.75rem, 2vw, 1.5rem);
     }
-
-    .prizes h3 {
-      font-size: clamp(1.3rem, 3vw, 1.8rem);
-      text-align: center;
+    .prizes h3,
+    .rules h3 {
+      font-size: clamp(1.5rem, 4vw, 2.25rem);
       color: var(--secondary);
-      margin-bottom: 1rem;
+      text-align: center;
+      margin-bottom: clamp(0.5rem, 2vw, 1rem);
     }
-
-    .prizes ul {
+    .prizes ul,
+    .rules ul {
       list-style: none;
+      display: grid;
+      gap: clamp(0.5rem, 2vw, 1rem);
+      padding-left: clamp(1rem, 3vw, 2rem);
     }
-
-    .prizes li {
+    .prizes li,
+    .rules li {
       display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      font-size: clamp(1rem, 2.5vw, 1.2rem);
-      margin: 1rem 0;
+      align-items: flex-start;
+      gap: clamp(0.5rem, 2vw, 1rem);
+      font-size: clamp(1rem, 3vw, 1.5rem);
       transition: transform 0.3s, color 0.3s;
     }
-
     .prizes li:hover {
       color: var(--primary);
       transform: translateX(0.5rem);
     }
 
-    /* ==========
-       REGISTER BUTTON
-       ========== */
     .register-section {
       text-align: center;
-      margin-top: 2rem;
     }
-
     .register-section h3 {
-      font-size: clamp(1.2rem, 3vw, 1.6rem);
+      font-size: clamp(1.25rem, 4vw, 2rem);
       color: var(--secondary);
-      margin-bottom: 1rem;
+      margin-bottom: clamp(0.5rem, 2vw, 1rem);
     }
-
     .register-button {
       display: inline-block;
-      padding: clamp(0.75rem, 2vw, 1rem) clamp(1.5rem, 4vw, 2rem);
-      font-size: clamp(1rem, 2.5vw, 1.2rem);
+      width: 100%;
+      max-width: 300px;
+      padding: clamp(0.75rem, 3vw, 1.25rem);
+      font-size: clamp(1rem, 3vw, 1.5rem);
       background: linear-gradient(135deg, var(--primary), var(--secondary));
       color: #000;
       font-weight: bold;
       border: none;
-      border-radius: 0.75rem;
+      border-radius: clamp(0.5rem, 2vw, 1rem);
       cursor: pointer;
       box-shadow: 0 0 10px var(--primary), 0 0 20px var(--secondary);
       transition: transform 0.3s, box-shadow 0.3s;
     }
-
     .register-button:hover {
       transform: scale(1.05);
       box-shadow: 0 0 20px var(--secondary), 0 0 40px var(--primary);
     }
-
     .disclaimer {
-      font-size: clamp(0.8rem, 2vw, 1rem);
+      font-size: clamp(0.8rem, 2.5vw, 1.1rem);
       color: #ccc;
-      margin-top: 1rem;
+      margin-top: clamp(0.5rem, 2vw, 1rem);
+    }
+
+    /* Social Buttons (always side-by-side) */
+    .social-buttons {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: clamp(1rem, 3vw, 2rem);
+      flex-wrap: nowrap;
+    }
+    .social-button {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: clamp(0.5rem, 2vw, 1rem);
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+    .social-button:hover { transform: scale(1.1); }
+    .icon-wrapper {
+      width: clamp(3rem, 6vw, 5rem);
+      height: clamp(3rem, 6vw, 5rem);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: clamp(1.5rem, 5vw, 2.5rem);
+      box-shadow: 0 0 10px currentColor;
+    }
+    .label {
+      font-size: clamp(0.9rem, 3vw, 1.2rem);
+      font-weight: 600;
+    }
+    .youtube .icon-wrapper { background: var(--yt-red); color: #fff; }
+    .twitch  .icon-wrapper { background: var(--twitch-purple); color: #fff; }
+    .discord .icon-wrapper { background: var(--discord-blurple); color: #fff; }
+
+    @media (max-width: 400px) {
+      .social-buttons {
+        flex-wrap: wrap;
+      }
     }
 
     footer {
       text-align: center;
-      margin-top: 3rem;
-      font-size: clamp(0.8rem, 2vw, 1rem);
+      font-size: clamp(0.8rem, 2.5vw, 1.1rem);
       color: #777;
     }
 
-    /* ==========
-       ANIMATIONS
-       ========== */
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(2rem); }
       to   { opacity: 1; transform: translateY(0); }
     }
-
     @keyframes glowFade {
       from { text-shadow: 0 0 10px var(--primary); }
       to   { text-shadow: 0 0 20px var(--secondary); }
@@ -196,16 +196,28 @@
     <header>
       <h1>BGMI Custom Room Tournament</h1>
       <h2>🎉 Celebrating 10 Years with ANONYMOUS1270</h2>
-      <p class="event-date">📅 29 May 2025 at 8:00 PM IST</p>
+      <p class="event-date">📅 29 May 2025 at 8:00 PM IST</p>
       <div id="countdown">Loading countdown...</div>
     </header>
 
     <section class="prizes">
       <h3>🏆 Tournament Prizes</h3>
       <ul>
-        <li>💥 2000 UC for Final Kill</li>
-        <li>🎁 Royal Pass for Top 5 Players</li>
+        <li>💥 2000 UC for Final Kill</li>
+        <li>🎁 Royal Pass for Top 5 Players</li>
         <li>💰 ₹10 per Kill (only for 5+ kills)</li>
+      </ul>
+    </section>
+
+    <section class="rules">
+      <h3>📜 Tournament Rules</h3>
+      <ul>
+        <li>1️⃣ Each player must join the custom room on time. Late entries will be disqualified.</li>
+        <li>2️⃣ No cheating or use of third-party tools is allowed. Violators will be banned.</li>
+        <li>3️⃣ Friendly fire is OFF. Team kills do not count towards rewards.</li>
+        <li>4️⃣ Minimum 5 kills required to earn ₹10 per kill reward.</li>
+        <li>5️⃣ Decisions by the admin team are final in case of disputes.</li>
+        <li>6️⃣ Winners must submit their in-game UID and match screenshots for verification.</li>
       </ul>
     </section>
 
@@ -218,34 +230,43 @@
       <p class="disclaimer">⚠ Please enter accurate details to ensure eligibility for rewards.</p>
     </section>
 
+    <div class="social-buttons">
+      <a class="social-button youtube" href="https://www.youtube.com/@ANONYMOUS127.0?sub_confirmation=1" target="_blank">
+        <div class="icon-wrapper">▶️</div>
+        <div class="label">YouTube</div>
+      </a>
+      <a class="social-button twitch" href="https://www.twitch.tv/tuchkituiyan" target="_blank">
+        <div class="icon-wrapper">🎮</div>
+        <div class="label">Twitch</div>
+      </a>
+      <a class="social-button discord" href="https://discord.gg/jYkyAJsumD" target="_blank">
+        <div class="icon-wrapper">💬</div>
+        <div class="label">Discord</div>
+      </a>
+    </div>
+
     <footer>
-      © 2025 ANONYMOUS1270 | Built for the real warriors of BGMI 🔥
+      © 2025 ANONYMOUS1270 | Built for the real warriors of BGMI 🔥
     </footer>
   </div>
 
   <script>
     const countdown = document.getElementById("countdown");
-    // 29 May 2025 at 20:00:00 IST (UTC+05:30)
     const eventDate = new Date("2025-05-29T20:00:00+05:30").getTime();
-
     function updateCountdown() {
       const now = Date.now();
       const diff = eventDate - now;
-
       if (diff <= 0) {
         countdown.textContent = "🚨 Tournament Started!";
         clearInterval(timerInterval);
         return;
       }
-
-      const d = Math.floor(diff / (1000*60*60*24));
-      const h = Math.floor((diff % (1000*60*60*24)) / (1000*60*60));
-      const m = Math.floor((diff % (1000*60*60)) / (1000*60));
-      const s = Math.floor((diff % (1000*60)) / 1000);
-
+      const d = Math.floor(diff / 86400000);
+      const h = Math.floor((diff % 86400000) / 3600000);
+      const m = Math.floor((diff % 3600000) / 60000);
+      const s = Math.floor((diff % 60000) / 1000);
       countdown.textContent = `⏳ ${d}d ${h}h ${m}m ${s}s remaining`;
     }
-
     updateCountdown();
     const timerInterval = setInterval(updateCountdown, 1000);
   </script>
