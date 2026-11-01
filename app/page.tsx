@@ -1,84 +1,48 @@
 import Link from "next/link";
+import { ArrowRight, CirclePlay, Radio, Trophy, Zap } from "lucide-react";
+import { ContentCard } from "@/components/content-card";
 
-const nav = ["Gaming", "Technology", "Reviews", "News", "Videos", "Events", "Tournaments"];
+const pillars = [
+  ["01", "Gaming", "Reviews, news, guides, esports and the games worth your time."],
+  ["02", "Technology", "Hardware, creator gear, software and the tech powering play."],
+  ["03", "Beyond", "Events, tournaments, creators and stories shaping the culture."],
+];
 
 export default function Home() {
-  return (
-    <main className="min-h-screen bg-[#090909] text-white">
-      <div className="border-b border-white/10 bg-[#d90429] px-4 py-2 text-center text-xs font-semibold tracking-[0.18em] uppercase">
-        ANONYMOUS1270 Studios is building a new era of gaming & technology media.
-      </div>
-
-      <header className="sticky top-0 z-20 border-b border-white/10 bg-[#090909]/90 backdrop-blur-xl">
-        <div className="container flex h-20 items-center justify-between gap-8">
-          <Link href="/" className="shrink-0 text-lg font-black tracking-tight">
-            ANONYMOUS<span className="text-[#d90429]">1270</span>
-          </Link>
-          <nav className="hidden items-center gap-6 lg:flex" aria-label="Primary navigation">
-            {nav.map((item) => (
-              <Link key={item} href={`/${item.toLowerCase()}`} className="text-sm text-white/70 transition hover:text-white">
-                {item}
-              </Link>
-            ))}
-          </nav>
-          <Link href="/search" className="rounded-full border border-white/15 px-4 py-2 text-sm font-medium hover:border-white/30">
-            Search
-          </Link>
-        </div>
-      </header>
-
-      <section className="container grid min-h-[680px] items-center gap-12 py-24 lg:grid-cols-[1.15fr_.85fr]">
+  return <main>
+    <section className="relative overflow-hidden border-b border-white/[0.08]">
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_78%_35%,rgba(217,4,41,.16),transparent_28%),radial-gradient(circle_at_20%_80%,rgba(255,255,255,.035),transparent_25%)]" />
+      <div className="site-container relative grid min-h-[calc(100vh-104px)] items-end gap-12 py-20 lg:grid-cols-[1.35fr_.65fr] lg:py-28">
         <div>
-          <p className="mb-6 text-sm font-bold uppercase tracking-[0.3em] text-[#d90429]">ANONYMOUS1270 Studios</p>
-          <h1 className="max-w-4xl text-6xl font-black leading-[0.92] tracking-[-0.05em] sm:text-7xl lg:text-8xl">
-            Gaming.<br />Tech.<br /><span className="text-white/45">Beyond.</span>
-          </h1>
-          <p className="mt-8 max-w-2xl text-lg leading-8 text-white/60">
-            A premium gaming and technology media platform covering the games we play, the hardware we use, and the stories shaping the industry.
-          </p>
-          <div className="mt-10 flex flex-wrap gap-4">
-            <Link href="/livestream" className="rounded-full bg-[#d90429] px-6 py-3 text-sm font-bold transition hover:bg-[#ef163b]">Watch Live</Link>
-            <Link href="/reviews" className="rounded-full border border-white/15 px-6 py-3 text-sm font-bold transition hover:border-white/35">Explore Reviews</Link>
+          <p className="eyebrow mb-7 text-[#d90429]">ANONYMOUS1270 Studios</p>
+          <h1 className="display max-w-5xl">Gaming.<br />Tech.<br /><span className="text-white/35">Beyond.</span></h1>
+          <p className="mt-9 max-w-2xl text-base leading-7 text-white/52 sm:text-lg">A premium gaming and technology media platform covering the games we play, the hardware we use and the stories shaping the industry.</p>
+          <div className="mt-9 flex flex-wrap gap-3">
+            <Link href="/livestream" className="inline-flex items-center gap-2 rounded-full bg-[#d90429] px-6 py-3 text-sm font-bold hover:bg-[#ef163b]">Watch Live <CirclePlay size={16} /></Link>
+            <Link href="/reviews" className="inline-flex items-center gap-2 rounded-full border border-white/15 px-6 py-3 text-sm font-bold hover:border-white/30">Explore Reviews <ArrowRight size={16} /></Link>
           </div>
         </div>
-
-        <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-[#111111] p-8 shadow-2xl">
-          <div className="absolute -right-24 -top-24 h-64 w-64 rounded-full bg-[#d90429]/20 blur-3xl" />
-          <div className="relative">
-            <div className="mb-12 flex items-center justify-between border-b border-white/10 pb-5">
-              <span className="text-xs font-bold uppercase tracking-[0.2em] text-white/50">Live status</span>
-              <span className="flex items-center gap-2 text-xs font-bold text-[#ff5a74]"><i className="h-2 w-2 rounded-full bg-[#d90429]" /> OFFLINE</span>
-            </div>
-            <p className="text-sm text-white/45">The platform is being rebuilt from the ground up.</p>
-            <p className="mt-3 text-2xl font-bold">The next era starts here.</p>
-            <div className="mt-12 grid grid-cols-3 gap-3">
-              {["Gaming", "Technology", "Events"].map((item) => (
-                <div key={item} className="rounded-2xl border border-white/10 bg-white/[0.03] p-4">
-                  <p className="text-xs text-white/45">Focus</p>
-                  <p className="mt-2 text-sm font-semibold">{item}</p>
-                </div>
-              ))}
-            </div>
-          </div>
+        <div className="rounded-3xl border border-white/10 bg-[#101010]/90 p-6 backdrop-blur-xl lg:mb-2">
+          <div className="flex items-center justify-between border-b border-white/10 pb-5"><span className="eyebrow">Live status</span><span className="flex items-center gap-2 text-[10px] font-bold tracking-widest text-white/45"><i className="h-2 w-2 rounded-full bg-white/25" /> OFFLINE</span></div>
+          <div className="py-10"><Radio size={22} className="text-[#d90429]" /><h2 className="mt-4 text-2xl font-bold tracking-tight">The next era starts here.</h2><p className="mt-2 text-sm leading-6 text-white/42">Editorial, video and events — built around gaming and technology.</p></div>
+          <div className="grid grid-cols-2 gap-2"><div className="rounded-xl bg-white/[0.035] p-4"><p className="eyebrow">Focus</p><p className="mt-2 text-sm font-semibold">Gaming + Tech</p></div><div className="rounded-xl bg-white/[0.035] p-4"><p className="eyebrow">Format</p><p className="mt-2 text-sm font-semibold">Media + Live</p></div></div>
         </div>
-      </section>
+      </div>
+    </section>
 
-      <section className="border-y border-white/10 bg-[#111111]">
-        <div className="container grid gap-8 py-14 sm:grid-cols-3">
-          {[["01", "Editorial", "News, reviews, guides and industry coverage."], ["02", "Video", "Livestreams, highlights, tutorials and original formats."], ["03", "Events", "Tournaments, esports coverage and creator-led events."]].map(([num, title, text]) => (
-            <div key={num}>
-              <p className="text-xs font-bold text-[#d90429]">{num}</p>
-              <h2 className="mt-3 text-2xl font-bold">{title}</h2>
-              <p className="mt-2 text-sm leading-6 text-white/50">{text}</p>
-            </div>
-          ))}
-        </div>
-      </section>
+    <section className="border-b border-white/[0.08] bg-[#111111]">
+      <div className="site-container grid md:grid-cols-3">{pillars.map(([num,title,text]) => <div key={num} className="border-b border-white/[0.08] px-0 py-10 md:border-b-0 md:border-r md:px-8 md:first:pl-0 md:last:border-r-0"><span className="eyebrow text-[#d90429]">{num}</span><h2 className="mt-3 text-2xl font-bold">{title}</h2><p className="mt-2 max-w-sm text-sm leading-6 text-white/42">{text}</p></div>)}</div>
+    </section>
 
-      <footer className="container flex flex-col gap-4 py-12 text-sm text-white/45 sm:flex-row sm:items-center sm:justify-between">
-        <p>© {new Date().getFullYear()} ANONYMOUS1270 Studios. All rights reserved.</p>
-        <div className="flex gap-5"><Link href="/about">About</Link><Link href="/contact">Contact</Link><Link href="/privacy">Privacy</Link></div>
-      </footer>
-    </main>
-  );
+    <section className="site-container py-20 sm:py-28">
+      <div className="mb-8 flex items-end justify-between gap-6"><div><p className="eyebrow text-[#d90429]">Featured</p><h2 className="mt-3 text-4xl font-black tracking-[-.04em] sm:text-5xl">What&apos;s happening</h2></div><Link href="/news" className="hidden items-center gap-2 text-sm font-semibold text-white/55 hover:text-white sm:flex">All stories <ArrowRight size={16} /></Link></div>
+      <div className="grid gap-4 lg:grid-cols-2"><ContentCard featured label="Gaming" title="The games, updates and competitive moments shaping the week." href="/gaming" meta="Gaming • Editorial" /><div className="grid gap-4 sm:grid-cols-2"><ContentCard label="Technology" title="Hardware and creator gear, tested and explained." href="/technology" /><ContentCard label="Reviews" title="Independent verdicts with a clear methodology." href="/reviews" /></div></div>
+    </section>
+
+    <section className="border-y border-white/[0.08] bg-[#111111]">
+      <div className="site-container grid gap-12 py-20 lg:grid-cols-[1fr_1fr] lg:items-center"><div><p className="eyebrow text-[#d90429]">Events & tournaments</p><h2 className="mt-4 max-w-xl text-4xl font-black tracking-[-.04em] sm:text-6xl">Play. Compete. Experience.</h2></div><div><p className="text-base leading-7 text-white/48">Discover tournaments, esports coverage, creator-led events and the competitive side of gaming.</p><div className="mt-7 flex flex-wrap gap-3"><Link href="/tournaments" className="inline-flex items-center gap-2 rounded-full bg-white px-5 py-3 text-sm font-bold text-black"><Trophy size={16} /> Tournaments</Link><Link href="/events" className="inline-flex items-center gap-2 rounded-full border border-white/15 px-5 py-3 text-sm font-bold"><Zap size={16} /> Explore events</Link></div></div></div>
+    </section>
+
+    <section className="site-container py-20 sm:py-28"><div className="rounded-3xl border border-white/10 bg-[radial-gradient(circle_at_85%_20%,rgba(217,4,41,.22),transparent_30%),#111111] p-8 sm:p-14"><p className="eyebrow text-[#d90429]">For brands & partners</p><div className="mt-4 flex flex-col justify-between gap-8 lg:flex-row lg:items-end"><h2 className="max-w-2xl text-4xl font-black tracking-[-.04em] sm:text-5xl">Build something worth remembering.</h2><Link href="/brands" className="inline-flex w-fit items-center gap-2 rounded-full bg-[#d90429] px-6 py-3 text-sm font-bold">Work with us <ArrowRight size={16} /></Link></div></div></section>
+  </main>;
 }
